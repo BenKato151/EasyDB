@@ -1,0 +1,37 @@
+Idea
+
+		You can create, manage and delete everything what comes with XML files and databases
+
+
+___________________________________________
+
+
+TODO
+
+		Add:			UI->
+							Textfields for database and XML path
+							Loading Scene => Scene for everything
+							Load tables->Create Scenes auto..?
+							Good Background Color
+							Buttons
+
+						Scripts->
+							Classes for jobs
+							one .cs to implement into Unity
+
+		Edit:
+
+		Delete:
+
+
+_____________________________________________
+
+
+Finished
+
+		Added:
+
+		Edited:
+
+		Deleted:
+
