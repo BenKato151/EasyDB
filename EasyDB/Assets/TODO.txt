@@ -29,7 +29,8 @@ _____________________________________________
 
 Finished
 
-		Added:
+		Added:		
+					Connection Open and Close Functions
 
 		Edited:
 
