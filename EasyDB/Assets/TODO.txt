@@ -16,7 +16,8 @@ TODO
 
 
 		Edit:			Script->
-							Reading tables source
+							Fix this fucking Error -> Selecting: IndexOutOfRange between Line 116 & 128
+
 
 		Delete:
 
@@ -27,7 +28,7 @@ _____________________________________________
 Finished
 
 		Added:		
-					dynamic creation of tables via UI
+					dynamic searching tables
 
 		Edited:
 

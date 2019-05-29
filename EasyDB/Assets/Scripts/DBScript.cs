@@ -44,7 +44,7 @@ public class DBScript : MonoBehaviour
                     database_path.Replace(@"\", "/");
                 }
 
-                if (database_path.EndsWith(".sqlite") && !(rows <=1))
+                if (database_path.EndsWith(".sqlite") && !(rows < 1))
                 {
                     con = new SqliteConnection("Data Source = " + database_path + "; " + " Version = 3;");
                     if (con != null)
@@ -86,12 +86,13 @@ public class DBScript : MonoBehaviour
             Vector3 table_pos = num_of_rowsField.transform.position;
             rows = int.Parse(num_of_rowsField.text);
             rowarray = new InputField[rows];
+
             for (int i = 0; i < rows; i++)
             {
                 Quaternion instantiateInWorldSpace = default(Quaternion);
                 InputField tablefields = Instantiate(table_rows_original, new Vector3(table_pos.x,table_pos.y-((i+1)*35), table_pos.z), instantiateInWorldSpace);
                 tablefields.transform.SetParent(rowscontainer.transform);
-                tablefields.GetComponent<InputField>().contentType = InputField.ContentType.Alphanumeric;
+                tablefields.GetComponent<InputField>().contentType = InputField.ContentType.Custom;
                 tablefields.GetComponent<InputField>().placeholder.GetComponent<Text>().text = "table name";
 
                 tablefields.text = "";
@@ -108,12 +109,24 @@ public class DBScript : MonoBehaviour
     {
         Selecting(con);
     }
-    private void Selecting(SqliteConnection conn)
+    private void Selecting(SqliteConnection Scon)
     {
         try
-        {
-            Debug.Log("Uff");
-            //DOTO: Solve Problem Selecting -> TODO.txt
+        {        
+            for (int i = 0; i < rowarray.Length; i++)
+            {
+                string selecting = "SELECT * FROM " + rowarray[i].text + ";".ToString();
+                SqliteCommand command = new SqliteCommand(selecting, Scon);
+                SqliteDataReader output = command.ExecuteReader();
+
+                while (output.Read())
+                {
+                    Debug.Log(output[rowarray[i].text].ToString());
+                }
+                consoleMSG.text = "Searching in: " + rowarray[i].text;
+            }
+            consoleMSG.text = "Searching completed!";
+        
         }
         catch (Exception e)
         {
