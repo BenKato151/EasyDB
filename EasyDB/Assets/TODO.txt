@@ -11,15 +11,12 @@ TODO
 		Add:			UI->
 							Textfields for database and XML path
 							Loading Scene => Scene for everything
-							Load tables->Create Scenes auto..?
 							Good Background Color
 							Buttons
 
-						Scripts->
-							Classes for jobs
-							one .cs to implement into Unity
 
-		Edit:
+		Edit:			Script->
+							Reading tables source
 
 		Delete:
 
@@ -30,7 +27,7 @@ _____________________________________________
 Finished
 
 		Added:		
-					Connection Open and Close Functions
+					dynamic creation of tables via UI
 
 		Edited:
 
