@@ -15,8 +15,8 @@ TODO
 							Buttons
 
 
-		Edit:			Script->
-							Fix this fucking Error -> Selecting: IndexOutOfRange between Line 116 & 128
+		Edit:			
+						
 
 
 		Delete:
@@ -28,7 +28,7 @@ _____________________________________________
 Finished
 
 		Added:		
-					dynamic searching tables
+					dynamic searching tables (fixed!)
 
 		Edited:
 

@@ -34,11 +34,6 @@ public class DBScript : MonoBehaviour
         {
             if (File.Exists(database_path))
             {
-                if (num_of_rowsField.text != null)
-                {
-                    CreateTableRows();
-                }
-
                 for (int i = 0; i < database_path.Length; i++)
                 {
                     database_path.Replace(@"\", "/");
@@ -75,6 +70,13 @@ public class DBScript : MonoBehaviour
     #endregion
 
     #region CreateTableRows
+    public void CreateTableFields()
+    {
+        if (num_of_rowsField.text != null)
+        {
+            CreateTableRows();
+        }
+    }
     private void CreateTableRows()
     {
         if (!isEntered)
@@ -112,21 +114,27 @@ public class DBScript : MonoBehaviour
     private void Selecting(SqliteConnection Scon)
     {
         try
-        {        
-            for (int i = 0; i < rowarray.Length; i++)
-            {
-                string selecting = "SELECT * FROM " + rowarray[i].text + ";".ToString();
+        {
+            for (int b = 0; b < rowarray.Length; b++)
+            {            
+                string selecting = "SELECT * FROM " + rowarray[b].text.ToString() + " ;";
                 SqliteCommand command = new SqliteCommand(selecting, Scon);
                 SqliteDataReader output = command.ExecuteReader();
-
+                
                 while (output.Read())
                 {
-                    Debug.Log(output[rowarray[i].text].ToString());
+                    for (int i = 0; i < output.FieldCount; i++)
+                    {
+                        string column_value = output[i].ToString();
+                        string table = rowarray[b].text.ToString();
+                        string column = output.GetName(i).ToString();
+                        Debug.Log("In der Tabelle " + table + 
+                                  " ist der Wert der Column: " + column + " : " + column_value
+                        );
+                    }
                 }
-                consoleMSG.text = "Searching in: " + rowarray[i].text;
             }
-            consoleMSG.text = "Searching completed!";
-        
+            consoleMSG.text = "Success! ";
         }
         catch (Exception e)
         {
