@@ -1,1 +1,1 @@
-EasyDB is a Unity project to manage databases and XML files
+EasyDB is a Unity project to manage SQLite databases and XML files
