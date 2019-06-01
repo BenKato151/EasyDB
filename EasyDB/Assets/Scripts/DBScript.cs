@@ -63,8 +63,8 @@ public class DBScript : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log("Failed! \n" + e);
             consoleMSG.text = "Failed to connect.";
+            Debug.LogError("Failed! \n" + e);
         }
     }
     #endregion
@@ -129,7 +129,7 @@ public class DBScript : MonoBehaviour
                         string table = rowarray[b].text.ToString();
                         string column = output.GetName(i).ToString();
                         Debug.Log("In der Tabelle " + table + 
-                                  " ist der Wert der Column: " + column + " : " + column_value
+                                  " ist der Wert der Column " + column + " : " + column_value
                         );
                     }
                 }
@@ -138,8 +138,100 @@ public class DBScript : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log("Failed! \n" + e);
             consoleMSG.text = "Failed to read tables.";
+            Debug.LogError("Failed! \n" + e);
+        }
+    }
+    #endregion
+
+    //TODO: Add everything that is explained in comments. Look Up: TODO.txt
+
+    #region Delete Values
+    public void DeleteValuesInnerDB()
+    {
+        Delete(con);
+    }
+
+    private void Delete(SqliteConnection Scon)
+    {
+        try
+        {
+            string deleteColumn = " DELETE FROM " + //TextField for deleting column 
+                                      " WHERE ID = @id";
+
+            SqliteCommand Command = new SqliteCommand(deleteColumn, Scon);
+            Command.Parameters.Add("@id", System.Data.DbType.Int32).Value = 0 /* TextField for DB-ID */;
+
+            Command.ExecuteNonQuery();
+            Command.Parameters.Clear();
+            consoleMSG.text = "Deleted Row/s successfully!";
+        }
+        catch (Exception e)
+        {
+            consoleMSG.text = "Failed to delete Values";
+            Debug.LogError("Failed!\n" + e);
+        }
+    }
+    #endregion
+
+    #region Update Values
+    public void UpdateValuesInnerDB()
+    {
+        UpdateValues(con);
+    }
+
+    private void UpdateValues(SqliteConnection Scon)
+    {
+        try
+        {
+            string updatecommand = " UPDATE *** " + //Textfield for table
+                                       " SET " + /* TextField for column */ " = @wert " +
+                                       " WHERE ID = @IDvalue;";
+
+            SqliteCommand Command = new SqliteCommand(updatecommand, Scon);
+            Command.Parameters.Add("@wert", System.Data.DbType.Int32).Value = 0; //Textfield for new value
+            Command.Parameters.Add("@IDvalue", System.Data.DbType.Int32).Value = 0; //Textfield for new value
+
+            Command.ExecuteNonQuery();
+            Command.Parameters.Clear();
+            consoleMSG.text = "Updated value in \n" +
+                               "\nsuccessfuly!";
+        }
+        catch (Exception e)
+        {
+            consoleMSG.text = "Failed to update values";
+            Debug.LogError("Failed!\n" + e);
+        }
+    }
+    #endregion
+
+    #region Insert Values
+    public void InsertValuesInnerDB()
+    {
+        InsertValues(con);
+    }
+
+    private void InsertValues(SqliteConnection Scon)
+    {
+        try
+        {
+            string insertIntoAttributskosten = " INSERT INTO ***(****) " +
+                                          " VALUES(****);"; //Fields for table/columns and values + parameters
+
+
+            SqliteCommand Command = new SqliteCommand(insertIntoAttributskosten, Scon);
+            Command.Parameters.Add("@***", System.Data.DbType.Int32).Value = 0; //Fields for values
+            Command.Parameters.Add("@***", System.Data.DbType.Int32).Value = 0;
+            Command.Parameters.Add("@***", System.Data.DbType.Int32).Value = 0;
+
+            Command.ExecuteNonQuery();
+            Command.Parameters.Clear();
+            consoleMSG.text = "Inserted values nsuccessfuly!";
+        }
+        catch (Exception e)
+        {
+            consoleMSG.text = "Failed to insert values!";
+            Debug.LogError("Failed!\n" + e);
         }
     }
     #endregion
@@ -164,7 +256,7 @@ public class DBScript : MonoBehaviour
         catch (Exception e)
         {
             consoleMSG.text = "No connection was established.";
-            Debug.Log("Failed. \n" + e);
+            Debug.LogError("Failed. \n" + e);
         }
     }
     #endregion

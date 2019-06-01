@@ -1,6 +1,6 @@
 Idea
 
-		You can create, manage and delete everything what comes with XML files and databases
+		You can create, manage and delete everything what comes with XML files and databases (in SQLite)
 
 
 ___________________________________________
@@ -8,15 +8,24 @@ ___________________________________________
 
 TODO
 
-		Add:			UI->
-							Textfields for database and XML path
-							Loading Scene => Scene for everything
+		Add:			UI->							
+							Loading Scene => Scenes for xml and sqlite
 							Good Background Color
-							Buttons
+							Buttons, Textfields and Inputs for Inserting, Deleting, Updating
+							Textfield for Queries
 
+						Script-> 
+							Nice to have: 
+											Trigger etc.
 
-		Edit:			
+		Edit:			Script->
+							Finish everything that is explained in comments in Inserting, Deleting, Updating
+							Adding XML Support (export/import):
+								specific columns or everyting
+								Tag: Table -> XML-attributes: columns="values"
 						
+						UI->
+							Textfield for Queries
 
 
 		Delete:
@@ -27,10 +36,10 @@ _____________________________________________
 
 Finished
 
-		Added:		
-					dynamic searching tables (fixed!)
+		Added:		Schema for Deleting, Updating and Inserting SQLite Database (full manage Support)
+					Schema for XML Support
 
-		Edited:
+		Edited:		Debug.Log() -> .LogError() by catching Errors
 
 		Deleted:
 
